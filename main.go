@@ -1,10 +1,10 @@
 package main
 
 import (
-	"github.com/sankalpmukim/aoc-2023-go/day3"
+	"github.com/sankalpmukim/aoc-2023-go/day4"
 )
 
 func main() {
-	day3.Q1()
-	day3.Q2()
+	day4.Q1()
+	day4.Q2()
 }
