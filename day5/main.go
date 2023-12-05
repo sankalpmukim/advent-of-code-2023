@@ -56,7 +56,7 @@ func Q1() {
 					return
 				}
 				// fmt.Println("Dest:", dest, "\t\tSrc:", src, "\t\tRnge:", rnge)
-				if currVal >= src && currVal <= src+rnge {
+				if currVal >= src && currVal < src+rnge {
 					currVal = dest + (currVal - src)
 					fmt.Println("currVal:", currVal)
 					break
@@ -106,7 +106,7 @@ func parseMapRow(line string) (dest int, src int, rnge int, err error) {
 }
 
 func Q2() {
-	bytesContent, err := os.ReadFile("day5/main.txt")
+	bytesContent, err := os.ReadFile("day5/dummy.txt")
 	if err != nil {
 		fmt.Println("Error opening file:", err)
 		return
@@ -162,7 +162,7 @@ func Q2() {
 					return
 				}
 				// fmt.Println("Dest:", dest, "\t\tSrc:", src, "\t\tRnge:", rnge)
-				if currVal >= src && currVal <= src+rnge {
+				if currVal >= src && currVal < src+rnge {
 					currVal = dest + (currVal - src)
 					fmt.Println("currVal:", currVal)
 					break
