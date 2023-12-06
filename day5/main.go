@@ -1,7 +1,7 @@
 package day5
 
 import (
-	"fmt"
+	"log"
 	"os"
 	"strconv"
 	str "strings"
@@ -10,7 +10,7 @@ import (
 func Q1() {
 	bytesContent, err := os.ReadFile("day5/main.txt")
 	if err != nil {
-		fmt.Println("Error opening file:", err)
+		log.Println("Error opening file:", err)
 		return
 	}
 	content := str.Split(string(bytesContent), "\n\n")
@@ -27,12 +27,12 @@ func Q1() {
 	for i := 0; i < len(stringSeeds); i++ {
 		val, err := strconv.Atoi(stringSeeds[i])
 		if err != nil {
-			fmt.Println("Error converting string to int:", err)
+			log.Println("Error converting string to int:", err)
 			return
 		}
 		seeds[i] = val
 	}
-	fmt.Println("Seeds:", seeds)
+	log.Println("Seeds:", seeds)
 
 	finalAnswer := 0
 
@@ -41,24 +41,24 @@ func Q1() {
 	for i := 0; i < len(seeds); i++ {
 		// iterate content from 1 to len(content) - 1
 		currVal := seeds[i]
-		fmt.Println("num content: ", len(content))
+		log.Println("num content: ", len(content))
 		for j := 1; j < len(content); j++ {
 			// lines split by \n
 			lines := str.Split(str.TrimSpace(content[j]), "\n")[1:]
 			// sourceToDest := strings.Split(strings.Split(lines[0], " map:")[0], "-to-")
 			// source := sourceToDest[0]
 			// dest := sourceToDest[1]
-			// fmt.Println("Source:", source, "\t\tDest:", dest)
+			// log.Println("Source:", source, "\t\tDest:", dest)
 			for k := 0; k < len(lines); k++ {
 				dest, src, rnge, err := parseMapRow(lines[k])
 				if err != nil {
-					fmt.Println("Error parsing map row:", err)
+					log.Println("Error parsing map row:", err)
 					return
 				}
-				// fmt.Println("Dest:", dest, "\t\tSrc:", src, "\t\tRnge:", rnge)
+				// log.Println("Dest:", dest, "\t\tSrc:", src, "\t\tRnge:", rnge)
 				if currVal >= src && currVal < src+rnge {
 					currVal = dest + (currVal - src)
-					fmt.Println("currVal:", currVal)
+					log.Println("currVal:", currVal)
 					break
 				}
 			}
@@ -67,7 +67,7 @@ func Q1() {
 	}
 
 	finalAnswer = allCurrVals[0]
-	fmt.Println("allCurrVals:", allCurrVals, "\t\tlen(allCurrVals):",
+	log.Println("allCurrVals:", allCurrVals, "\t\tlen(allCurrVals):",
 		len(allCurrVals), "\t\tfinalANswer:", finalAnswer)
 	for i := 1; i < len(allCurrVals); i++ {
 		if allCurrVals[i] < finalAnswer {
@@ -75,7 +75,7 @@ func Q1() {
 		}
 	}
 
-	fmt.Println("Final answer:", finalAnswer)
+	log.Println("Final answer:", finalAnswer)
 }
 
 func parseMapRow(line string) (dest int, src int, rnge int, err error) {
@@ -108,7 +108,7 @@ func parseMapRow(line string) (dest int, src int, rnge int, err error) {
 func Q2() {
 	bytesContent, err := os.ReadFile("day5/dummy.txt")
 	if err != nil {
-		fmt.Println("Error opening file:", err)
+		log.Println("Error opening file:", err)
 		return
 	}
 	content := str.Split(string(bytesContent), "\n\n")
@@ -125,12 +125,12 @@ func Q2() {
 	for i := 0; i < len(stringSeedRanges); i++ {
 		val, err := strconv.Atoi(stringSeedRanges[i])
 		if err != nil {
-			fmt.Println("Error converting string to int:", err)
+			log.Println("Error converting string to int:", err)
 			return
 		}
 		seedRanges[i] = val
 	}
-	fmt.Println("Seeds Ranges:", seedRanges)
+	log.Println("Seeds Ranges:", seedRanges)
 
 	seeds := make([]int, 0)
 	for i := 0; i < len(seedRanges); i += 2 {
@@ -142,29 +142,29 @@ func Q2() {
 	finalAnswer := 0
 
 	allCurrVals := make([]int, 0, len(seedRanges))
-	fmt.Println("Seeds:", seeds)
+	log.Println("Seeds:", seeds)
 
 	for i := 0; i < len(seeds); i++ {
 		// iterate content from 1 to len(content) - 1
 		currVal := seeds[i]
-		fmt.Println("num content: ", len(content))
+		log.Println("num content: ", len(content))
 		for j := 1; j < len(content); j++ {
 			// lines split by \n
 			lines := str.Split(str.TrimSpace(content[j]), "\n")[1:]
 			// sourceToDest := strings.Split(strings.Split(lines[0], " map:")[0], "-to-")
 			// source := sourceToDest[0]
 			// dest := sourceToDest[1]
-			// fmt.Println("Source:", source, "\t\tDest:", dest)
+			// log.Println("Source:", source, "\t\tDest:", dest)
 			for k := 0; k < len(lines); k++ {
 				dest, src, rnge, err := parseMapRow(lines[k])
 				if err != nil {
-					fmt.Println("Error parsing map row:", err)
+					log.Println("Error parsing map row:", err)
 					return
 				}
-				// fmt.Println("Dest:", dest, "\t\tSrc:", src, "\t\tRnge:", rnge)
+				// log.Println("Dest:", dest, "\t\tSrc:", src, "\t\tRnge:", rnge)
 				if currVal >= src && currVal < src+rnge {
 					currVal = dest + (currVal - src)
-					fmt.Println("currVal:", currVal)
+					log.Println("currVal:", currVal)
 					break
 				}
 			}
@@ -173,7 +173,7 @@ func Q2() {
 	}
 
 	finalAnswer = allCurrVals[0]
-	fmt.Println("allCurrVals:", allCurrVals, "\t\tlen(allCurrVals):",
+	log.Println("allCurrVals:", allCurrVals, "\t\tlen(allCurrVals):",
 		len(allCurrVals), "\t\tfinalANswer:", finalAnswer)
 	for i := 1; i < len(allCurrVals); i++ {
 		if allCurrVals[i] < finalAnswer {
@@ -181,5 +181,5 @@ func Q2() {
 		}
 	}
 
-	fmt.Println("Final answer:", finalAnswer)
+	log.Println("Final answer:", finalAnswer)
 }

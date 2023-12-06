@@ -2,7 +2,7 @@ package day2
 
 import (
 	"bufio"
-	"fmt"
+	"log"
 	"os"
 	"strconv"
 	"strings"
@@ -11,7 +11,7 @@ import (
 func Q1() {
 	file, err := os.Open("day2/main.txt")
 	if err != nil {
-		fmt.Println("Error opening file:", err)
+		log.Println("Error opening file:", err)
 		return
 	}
 	defer file.Close()
@@ -46,7 +46,7 @@ func Q1() {
 				gameInfo := strings.Split(game, " ")
 				count, err := strconv.Atoi(gameInfo[0])
 				if err != nil {
-					fmt.Println("Error converting string to int:", err)
+					log.Println("Error converting string to int:", err)
 					return
 				}
 				if count > maxRanges[gameInfo[1]] {
@@ -66,16 +66,16 @@ func Q1() {
 	}
 
 	if err := scanner.Err(); err != nil {
-		fmt.Println("Error reading file:", err)
+		log.Println("Error reading file:", err)
 	}
 
-	fmt.Println(possibleCount)
+	log.Println(possibleCount)
 }
 
 func Q2() {
 	file, err := os.Open("day2/main.txt")
 	if err != nil {
-		fmt.Println("Error opening file:", err)
+		log.Println("Error opening file:", err)
 		return
 	}
 	defer file.Close()
@@ -105,7 +105,7 @@ func Q2() {
 				gameInfo := strings.Split(drop, " ")
 				count, err := strconv.Atoi(gameInfo[0])
 				if err != nil {
-					fmt.Println("Error converting string to int:", err)
+					log.Println("Error converting string to int:", err)
 				}
 				if count > minCounts[gameInfo[1]] {
 					minCounts[gameInfo[1]] = count
@@ -122,8 +122,8 @@ func Q2() {
 	}
 
 	if err := scanner.Err(); err != nil {
-		fmt.Println("Error reading file:", err)
+		log.Println("Error reading file:", err)
 	}
 
-	fmt.Println(finalSum)
+	log.Println(finalSum)
 }

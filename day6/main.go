@@ -1,7 +1,7 @@
 package day6
 
 import (
-	"fmt"
+	"log"
 	"os"
 	"strconv"
 	"strings"
@@ -10,7 +10,7 @@ import (
 func Q1() {
 	bytesContent, err := os.ReadFile("day6/main.txt")
 	if err != nil {
-		fmt.Println("Error opening file:", err)
+		log.Println("Error opening file:", err)
 		return
 	}
 	content := strings.Split(strings.TrimSpace(string(bytesContent)), "\n")
@@ -23,7 +23,7 @@ func Q1() {
 		}
 		intVal, err := strconv.Atoi(timesStr[i])
 		if err != nil {
-			fmt.Println("Error converting string to int:", err)
+			log.Println("Error converting string to int:", err)
 			return
 		}
 		times = append(times, intVal)
@@ -35,7 +35,7 @@ func Q1() {
 		}
 		intVal, err := strconv.Atoi(distsStr[i])
 		if err != nil {
-			fmt.Println("Error converting string to int:", err)
+			log.Println("Error converting string to int:", err)
 			return
 		}
 		dists = append(dists, intVal)
@@ -46,19 +46,19 @@ func Q1() {
 			realDist := x * (times[i] - x)
 			if realDist > dists[i] {
 				maxPossible := times[i] - x*2 + 1
-				fmt.Println("Max Possible:", maxPossible)
+				log.Println("Max Possible:", maxPossible)
 				finalAnswer *= maxPossible
 				break
 			}
 		}
 	}
-	fmt.Println("Final Answer:", finalAnswer)
+	log.Println("Final Answer:", finalAnswer)
 }
 
 func Q2() {
 	bytesContent, err := os.ReadFile("day6/main.txt")
 	if err != nil {
-		fmt.Println("Error opening file:", err)
+		log.Println("Error opening file:", err)
 		return
 	}
 	content := strings.Split(strings.TrimSpace(string(bytesContent)), "\n")
@@ -71,7 +71,7 @@ func Q2() {
 		}
 		intVal, err := strconv.Atoi(timesStr[i])
 		if err != nil {
-			fmt.Println("Error converting string to int:", err)
+			log.Println("Error converting string to int:", err)
 			return
 		}
 		times = append(times, intVal)
@@ -83,7 +83,7 @@ func Q2() {
 		}
 		intVal, err := strconv.Atoi(distsStr[i])
 		if err != nil {
-			fmt.Println("Error converting string to int:", err)
+			log.Println("Error converting string to int:", err)
 			return
 		}
 		dists = append(dists, intVal)
@@ -96,16 +96,16 @@ func Q2() {
 	}
 	timesInt, err := strconv.Atoi(timesCum)
 	if err != nil {
-		fmt.Println("Error converting string to int:", err)
+		log.Println("Error converting string to int:", err)
 		return
 	}
 	distsInt, err := strconv.Atoi(distsCum)
 	if err != nil {
-		fmt.Println("Error converting string to int:", err)
+		log.Println("Error converting string to int:", err)
 		return
 	}
-	fmt.Println("Times:", timesInt)
-	fmt.Println("Dists:", distsInt)
+	log.Println("Times:", timesInt)
+	log.Println("Dists:", distsInt)
 	times = []int{timesInt}
 	dists = []int{distsInt}
 	finalAnswer := 1
@@ -114,11 +114,11 @@ func Q2() {
 			realDist := x * (times[i] - x)
 			if realDist > dists[i] {
 				maxPossible := times[i] - x*2 + 1
-				fmt.Println("Max Possible:", maxPossible)
+				log.Println("Max Possible:", maxPossible)
 				finalAnswer *= maxPossible
 				break
 			}
 		}
 	}
-	fmt.Println("Final Answer:", finalAnswer)
+	log.Println("Final Answer:", finalAnswer)
 }

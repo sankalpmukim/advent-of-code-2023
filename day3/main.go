@@ -2,7 +2,7 @@ package day3
 
 import (
 	"bufio"
-	"fmt"
+	"log"
 	"os"
 	"unicode"
 )
@@ -10,7 +10,7 @@ import (
 func Q1() {
 	file, err := os.Open("day3/dummyinput.txt")
 	if err != nil {
-		fmt.Println("Error opening file:", err)
+		log.Println("Error opening file:", err)
 		return
 	}
 	defer file.Close()
@@ -40,11 +40,11 @@ func Q1() {
 				for k := j; k <= endIndex; k++ {
 					num = num*10 + int(lines[i][k]-'0')
 				}
-				// fmt.Println("Found number:", num)
+				// log.Println("Found number:", num)
 				if isPartNumber(lines, i, j, endIndex) {
 					finalAnswer += num
 					// } else {
-					// fmt.Println("Not part of a number:", num)
+					// log.Println("Not part of a number:", num)
 				}
 				j = endIndex + 1
 			}
@@ -52,9 +52,9 @@ func Q1() {
 	}
 
 	if err := scanner.Err(); err != nil {
-		fmt.Println("Error reading file:", err)
+		log.Println("Error reading file:", err)
 	}
-	fmt.Println("Final answer:", finalAnswer)
+	log.Println("Final answer:", finalAnswer)
 }
 
 func isPartNumber(lines [][]rune, i, j, k int) bool {
@@ -103,7 +103,7 @@ type gearPosition struct {
 func Q2() {
 	file, err := os.Open("day3/main.txt")
 	if err != nil {
-		fmt.Println("Error opening file:", err)
+		log.Println("Error opening file:", err)
 		return
 	}
 	defer file.Close()
@@ -138,7 +138,7 @@ func Q2() {
 					if isNearGear {
 						partNumsNearGear[gearPos] = append(partNumsNearGear[gearPos], num)
 						// } else {
-						fmt.Println("Not near gear:", num)
+						log.Println("Not near gear:", num)
 					}
 				}
 				j = endIndex + 1
@@ -147,14 +147,14 @@ func Q2() {
 	}
 
 	for k, nums := range partNumsNearGear {
-		fmt.Println(k, nums)
+		log.Println(k, nums)
 		if len(nums) == 2 {
 			finalAnswer += nums[0] * nums[1]
 		}
 	}
 
 	if err := scanner.Err(); err != nil {
-		fmt.Println("Error reading file:", err)
+		log.Println("Error reading file:", err)
 	}
-	fmt.Println("Final answer:", finalAnswer)
+	log.Println("Final answer:", finalAnswer)
 }

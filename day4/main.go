@@ -2,7 +2,7 @@ package day4
 
 import (
 	"bufio"
-	"fmt"
+	"log"
 	"os"
 	"strconv"
 	"strings"
@@ -11,7 +11,7 @@ import (
 func Q1() {
 	file, err := os.Open("day4/main.txt")
 	if err != nil {
-		fmt.Println("Error opening file:", err)
+		log.Println("Error opening file:", err)
 		return
 	}
 	defer file.Close()
@@ -26,14 +26,14 @@ func Q1() {
 		numbersIHaveStr := strings.Split(strings.Split(numbers, " | ")[1], " ")
 		winningNumbers := []int{}
 		numbersIHave := []int{}
-		// fmt.Println(winningNumbersStr, numbersIHaveStr)
+		// log.Println(winningNumbersStr, numbersIHaveStr)
 		for _, num := range winningNumbersStr {
 			if num == "" {
 				continue
 			}
 			val, err := strconv.Atoi(num)
 			if err != nil {
-				fmt.Println("error converting string to int", err)
+				log.Println("error converting string to int", err)
 				return
 			}
 			winningNumbers = append(winningNumbers, val)
@@ -44,12 +44,12 @@ func Q1() {
 			}
 			val, err := strconv.Atoi(num)
 			if err != nil {
-				fmt.Println("error converting string to int", err)
+				log.Println("error converting string to int", err)
 				return
 			}
 			numbersIHave = append(numbersIHave, val)
 		}
-		// fmt.Println(winningNumbers, numbersIHave)
+		// log.Println(winningNumbers, numbersIHave)
 
 		// count how many numbersIHave are in winningNumbers
 		count := 0
@@ -66,9 +66,9 @@ func Q1() {
 	}
 
 	if err := scanner.Err(); err != nil {
-		fmt.Println("Error reading file:", err)
+		log.Println("Error reading file:", err)
 	}
-	fmt.Println("Final answer:", finalAnswer)
+	log.Println("Final answer:", finalAnswer)
 }
 
 func power(base, exponent int) int {
@@ -88,7 +88,7 @@ func Q2() {
 
 	file, err := os.Open("day4/main.txt")
 	if err != nil {
-		fmt.Println("Error opening file:", err)
+		log.Println("Error opening file:", err)
 		return
 	}
 	defer file.Close()
@@ -104,7 +104,7 @@ func Q2() {
 		line := scanner.Text()
 		numbers := strings.Split(line, ": ")[1]
 		gameInfo := strings.Split(strings.Split(line, ": ")[0], " ")
-		fmt.Println(gameInfo)
+		log.Println(gameInfo)
 		// remove all empty strings from gameInfo
 		for i := 0; i < len(gameInfo); i++ {
 			if gameInfo[i] == "" {
@@ -114,40 +114,40 @@ func Q2() {
 		}
 		gameNum, err := strconv.Atoi(gameInfo[1])
 		if err != nil {
-			fmt.Println("error converting string to int", err)
+			log.Println("error converting string to int", err)
 			return
 		} else {
-			fmt.Println("gameNum:", gameNum)
+			log.Println("gameNum:", gameNum)
 		}
 		winningNumbersStr := strings.Split(strings.Split(numbers, " | ")[0], " ")
 		numbersIHaveStr := strings.Split(strings.Split(numbers, " | ")[1], " ")
 		winningNumbers := []int{}
 		numbersIHave := []int{}
-		fmt.Println(winningNumbersStr, numbersIHaveStr)
+		log.Println(winningNumbersStr, numbersIHaveStr)
 		for _, num := range winningNumbersStr {
 			if num == "" {
 				continue
 			}
 			val, err := strconv.Atoi(num)
 			if err != nil {
-				fmt.Println("error converting string to int", err)
+				log.Println("error converting string to int", err)
 				return
 			}
 			winningNumbers = append(winningNumbers, val)
 		}
-		fmt.Println(winningNumbers)
+		log.Println(winningNumbers)
 		for _, num := range numbersIHaveStr {
 			if num == "" {
 				continue
 			}
 			val, err := strconv.Atoi(num)
 			if err != nil {
-				fmt.Println("error converting string to int", err)
+				log.Println("error converting string to int", err)
 				return
 			}
 			numbersIHave = append(numbersIHave, val)
 		}
-		fmt.Println(winningNumbers, numbersIHave)
+		log.Println(winningNumbers, numbersIHave)
 
 		// count how many numbersIHave are in winningNumbers
 		count := 0
@@ -176,7 +176,7 @@ func Q2() {
 	finalAnswer = total
 
 	if err := scanner.Err(); err != nil {
-		fmt.Println("Error reading file:", err)
+		log.Println("Error reading file:", err)
 	}
-	fmt.Println("Final answer:", finalAnswer)
+	log.Println("Final answer:", finalAnswer)
 }

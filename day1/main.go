@@ -3,6 +3,7 @@ package day1
 import (
 	"bufio"
 	"fmt"
+	"log"
 	"math"
 	"os"
 	"strings"
@@ -12,7 +13,7 @@ import (
 func Q1() {
 	file, err := os.Open("day1/main.txt")
 	if err != nil {
-		fmt.Println("Error opening file:", err)
+		log.Println("Error opening file:", err)
 		return
 	}
 	defer file.Close()
@@ -43,15 +44,15 @@ func Q1() {
 	}
 
 	if err := scanner.Err(); err != nil {
-		fmt.Println("Error reading file:", err)
+		log.Println("Error reading file:", err)
 	}
-	fmt.Println(sum)
+	log.Println(sum)
 }
 
 func Q2() {
 	file, err := os.Open("day1/main.txt")
 	if err != nil {
-		fmt.Println("Error opening file:", err)
+		log.Println("Error opening file:", err)
 		return
 	}
 	defer file.Close()
@@ -61,17 +62,17 @@ func Q2() {
 	sum := 0
 	for scanner.Scan() {
 		line := scanner.Text()
-		// fmt.Println(line)
+		// log.Println(line)
 		firstDigit, lastDigit := getDigits(line)
-		// fmt.Println("firstDigit", firstDigit, "line", line)
-		// fmt.Println("lastDigit", lastDigit, "line", line)
+		// log.Println("firstDigit", firstDigit, "line", line)
+		// log.Println("lastDigit", lastDigit, "line", line)
 		sum += firstDigit*10 + lastDigit
 	}
 
 	if err := scanner.Err(); err != nil {
-		fmt.Println("Error reading file:", err)
+		log.Println("Error reading file:", err)
 	}
-	fmt.Println(sum)
+	log.Println(sum)
 }
 
 type IndexPair struct {
@@ -83,7 +84,7 @@ func getDigits(line string) (int, int) {
 	stringIndexes := make([]IndexPair, 0)
 	numIndexes := make([]IndexPair, 0)
 
-	// fmt.Println("length", len(stringIndexes))
+	// log.Println("length", len(stringIndexes))
 
 	numStrings := []string{"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"}
 	numStringsMap := map[string]int{
@@ -111,8 +112,8 @@ func getDigits(line string) (int, int) {
 		})
 	}
 
-	// fmt.Println(stringIndexes)
-	// fmt.Println(numIndexes)
+	// log.Println(stringIndexes)
+	// log.Println(numIndexes)
 
 	stringMin := math.MaxInt
 	numMin := math.MaxInt
